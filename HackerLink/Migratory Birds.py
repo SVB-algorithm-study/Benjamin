@@ -23,10 +23,15 @@ def migratoryBirds(arr):
     # return Counter(arr).most_common(1)[0][0]
     
     types = [0] * 6
+    largest = 0
     for t in arr:
         types[t] += 1
+        if types[t] > largest:
+            largest = types[t]
+    
+    return types.index(largest)
         
-    return types.index(max(types))
+    # return types.index(max(types))
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
