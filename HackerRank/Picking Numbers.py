@@ -24,9 +24,7 @@ def pickingNumbers(a):
     
     longest = 0
     for i in range(1,99):
-        temp = strg[i]+strg[i+1]
-        if longest < temp:
-            longest = temp
+        longest = max(longest,strg[i]+strg[i+1])
     
     return longest
             
