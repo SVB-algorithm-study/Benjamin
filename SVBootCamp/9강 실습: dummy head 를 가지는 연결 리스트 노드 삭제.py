@@ -47,7 +47,7 @@ class LinkedList:
 
     def insertAt(self, pos, newNode):
         if pos < 1 or pos > self.nodeCount + 1:
-            raise IndexError
+            return False
 
         if pos != 1 and pos == self.nodeCount + 1:
             prev = self.tail
@@ -57,24 +57,20 @@ class LinkedList:
 
 
     def popAfter(self, prev):
-        if prev.next == None:
+        if prev.next is None:
             return None
         curr = prev.next
-        if curr.next == None:
-            prev.next = None
+        if curr.next is None:
             self.tail = prev
-        else:
-            prev.next = curr.next # 좌우가 진짜 헷갈림..
+        prev.next = curr.next
         self.nodeCount -= 1
         return curr.data
+        
 
     def popAt(self, pos):
-        if pos < 1 or pos > self.nodeCount:
+        if pos<1 or pos>self.nodeCount:
             raise IndexError
-        if pos == 1:
-            prev = self.head
-        else:
-            prev = self.getAt(pos -1) 
+        prev = self.getAt(pos-1)
         return self.popAfter(prev)
 
 
