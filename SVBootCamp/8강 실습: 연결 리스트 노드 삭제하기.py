@@ -17,7 +17,7 @@ class LinkedList:
         if pos < 1 or pos > self.nodeCount:
             return None
 
-        i = 1  
+        i = 1
         curr = self.head
         while i < pos:
             curr = curr.next
@@ -50,27 +50,25 @@ class LinkedList:
 
 
     def popAt(self, pos):
-        if pos < 1 or pos > self.nodeCount: 
+        if pos < 1 or pos > self.nodeCount:
             raise IndexError
-
+        
         if pos == 1:
             curr = self.head
             self.head = curr.next
             if self.nodeCount == 1:
-                self.tail = None
-        elif pos == self.nodeCount:
-            curr = self.tail
-            prev = self.getAt(pos-1)
-            prev.next = None
-            self.tail = prev
+                self.tail = self.head
         else:
-            curr = self.getAt(pos)
             prev = self.getAt(pos-1)
+            curr = prev.next
             prev.next = curr.next
-
+            
+            if pos == self.nodeCount:
+                self.tail = prev
+        
         self.nodeCount -= 1
+        
         return curr.data
-
 
     def traverse(self):
         result = []
