@@ -24,7 +24,6 @@ def minimumNumber(n, password):
     upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     special_characters = "!@#$%^&*()-+"
     
-    cnt = 0
     flag = [True] * 4
     
     for c in password:
