@@ -28,13 +28,13 @@ def minimumNumber(n, password):
     flag = [True] * 4
     
     for c in password:
-        if c in numbers:
+        if flag[0] and c in numbers:
             flag[0] = False
-        elif c in lower_case:
+        elif flag[1] and c in lower_case:
             flag[1] = False
-        elif c in upper_case:
+        elif flag[2] and c in upper_case:
             flag[2] = False
-        elif c in special_characters:
+        elif flag[3] and c in special_characters:
             flag[3] = False
     
     res = sum(flag)
